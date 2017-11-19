@@ -1,0 +1,137 @@
+{
+  "parser": "babel-eslint",
+  "extends": ["airbnb"],
+  "plugins": ["react-native"],
+  // Map from global var to bool specifying if it can be redefined
+  "globals": {
+    "__DEV__": true,
+    "__dirname": false,
+    "__fbBatchedBridgeConfig": false,
+    "afterAll": false,
+    "alert": false,
+    "before": false,
+    "beforeAll": false,
+    "describe": false,
+    "cancelAnimationFrame": false,
+    "cancelIdleCallback": false,
+    "clearImmediate": true,
+    "clearInterval": false,
+    "clearTimeout": false,
+    "console": false,
+    "document": false,
+    "escape": false,
+    "expect": false,
+    "Event": false,
+    "EventTarget": false,
+    "exports": false,
+    "fetch": false,
+    "FormData": false,
+    "global": false,
+    "idx": false,
+    "it": false,
+    "jest": false,
+    "Map": true,
+    "module": false,
+    "navigator": false,
+    "process": false,
+    "Promise": true,
+    "requestAnimationFrame": true,
+    "requestIdleCallback": true,
+    "require": false,
+    "Set": true,
+    "setImmediate": true,
+    "setInterval": false,
+    "setTimeout": false,
+    "window": false,
+    "XMLHttpRequest": false,
+    "pit": false,
+    // Flow global types.
+    "ReactComponent": false,
+    "ReactClass": false,
+    "ReactElement": false,
+    "ReactPropsCheckType": false,
+    "ReactPropsChainableTypeChecker": false,
+    "ReactPropTypes": false,
+    "SyntheticEvent": false,
+    "$Either": false,
+    "$All": false,
+    "$Tuple": false,
+    "$Supertype": false,
+    "$Subtype": false,
+    "$Shape": false,
+    "$Diff": false,
+    "$Keys": false,
+    "$Enum": false,
+    "$Exports": false,
+    "$FlowIssue": false,
+    "$FlowFixMe": false,
+    "$FixMe": false
+  },
+  "rules": {
+    "semi": 0, // Requires or disallows use of semicolons instead of ASI, because.
+    "no-spaced-func": 1, // Disallows space between function identifier and application
+    "class-methods-use-this": 0, // Why so picky
+    "space-before-function-paren": ["error", "always"], // Function declarations with spaces rules
+    "consistent-return": 0, // Flow is ment for this
+    "object-shorthand": 0, // Inconsistence is worse than using ES6 features
+    "func-names": 0, // Depends on context (callbacks e.g)
+    "arrow-body-style": 0, // A policy on this is not yet necessary but uncomfortable
+    "arrow-parens": 0, // A policy on this is not yet necessary but uncomfortable
+    "global-require": 0, // Allows require to be used
+    "comma-dangle": [
+      "warn",
+      { // Fixes airbnb issue on JSX comma dangle
+        "arrays": "always-multiline",
+        "objects": "always-multiline",
+        "imports": "always-multiline",
+        "exports": "always-multiline",
+        "functions": "ignore"
+      }
+    ],
+    "object-curly-spacing": 0, // No strict policy on object spacing
+    "no-console": [
+      "warn",
+      { // We allow to console Warnings
+        "allow": [
+          "warn",
+          "error"
+        ]
+      }
+    ],
+    "no-plusplus": 0, // Y not? we smart
+    "no-case-declarations": 0, // We like 'em'
+    "no-use-before-define": 0, // We prefer to have stylesheets at the bottom of the files
+    "no-underscore-dangle": 0, // We want to allow underscores in JSON and 3rd party code
+    "no-mixed-operators": 0, // No policy on this by the moment
+    "prefer-spread": 0, // Array.apply has more uses than spread can cover
+    "camelcase": 0, // Our preference for JSON and object field notation
+    "default-case": 0, // enforces unnecessary verbosity
+    "no-bitwise": 0, // an IoT company needs bitwise ops
+    "no-irregular-whitespace": 1, // Not that hard
+    "react/no-multi-comp": 0, // Useful to reduce number of files
+    "react/prefer-stateless-function": 0, // Something we can easily see in pull requests
+    "react/prop-types": 0, // By the moment, we are considering having propTypes mandatory
+    "react/jsx-indent-props": 0, // Prettier's job
+    "react/jsx-indent": 0, // Prettier's job
+    "react/jsx-wrap-multilines": 0, // Prettier's job
+    "react/jsx-filename-extension": [
+      "error",
+      {
+        "extensions": [
+          ".js",
+          ".jsx"
+        ]
+      }
+    ],
+    "react/jsx-first-prop-new-line": [
+      "warn",
+      "multiline"
+    ], // Line efficiency is not that bad
+    "react/jsx-closing-bracket-location": 0, // Not a policy yet
+    "react-native/no-unused-styles": 1, // Does not belong to airbnb-eslint-config
+    "import/prefer-default-export": 0, // We like named exports, defaults are no better
+    "import/no-unresolved": 0, // We like providesModule
+    "import/extensions": 0, // No, bt could be a good asset
+    "import/no-extraneous-dependencies": 0
+  }
+}
