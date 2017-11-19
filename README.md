@@ -1,25 +1,31 @@
 # react-native-dial
 ![npm version](https://badge.fury.io/js/react-native-dial.svg)
 
-<a href="https://getyeti.co" target="_blank">
-   <img alt="works with yeti" src="works-with-yeti.png" width="100" />
-</a>
+A react runtime diagnose component
 
-> This package powers [Yeti Smart Home](https://getyeti.co) and is used in production.
-
-A react native reusable and efficient dial knob element.
+## Rationale
+* Testing native applications is complicated
+* There are features that can only be tested on a device, unless mocked
+* You may want to test your app on a production build, before submit it to the stores
 
 ```javascript
-import { Dial } from 'react-native-dial'
-// ...
-<Dial 
-   initialRadius={brightness * DIF_RADIUS / 100 + MIN_RADIUS}
-   radiusMax={MAX_RADIUS}
-   radiusMin={MIN_RADIUS}
-   onPress={() => this.toggle()}
-   responderStyle={styles.responderStyle}
-   wrapperStyle={styles.wheelWrapper}
-   onValueChange={(a, r) => this.changeBrightness(r)} />
+import { Diagnose, Test } from 'react-diagnose'
+
+/**
+ * Diagnose will run all test components inside
+ * Test components are going to be marked visually as completed or not
+ * to d
+ */
+return (
+  <Diagnose suiteTitle="Api tests">
+    <Test run={async () => {
+      api.fetchData() // will throw, you can see the stack trace onLongPress
+    }}>
+    <Test run={async () => {
+      console.log('Dummy test') // will pass
+    }}>
+  </Diagnose>
+)
 ```
 
 <img alt="demo screenshot" src="screenshot.png" width="350" />
@@ -48,5 +54,11 @@ Some properties:
 
 More documentation is incoming, in the meanwhile please read the source code. It is a single file!
 PRs and issues are more than welcome.
+
+<a href="https://getyeti.co" target="_blank">
+   <img alt="works with yeti" src="works-with-yeti.png" width="100" />
+</a>
+
+> This package powers [Yeti Smart Home](https://getyeti.co) and is used in production.
 
 Follow us in Github or https://twitter.com/netbeast_co.
