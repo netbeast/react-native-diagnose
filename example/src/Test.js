@@ -4,7 +4,7 @@
  * @flow
  */
 
-import React, { Component } from 'react'
+import React, {Component} from 'react'
 import {
   ActivityIndicator,
   Dimensions,
@@ -22,12 +22,12 @@ export class Test extends Component<{}> {
 
   constructor () {
     super()
-    this.state = { status: 'fail' }
+    this.state = {status: 'unknown'}
     this.test = this.test.bind(this)
   }
 
   state: {
-    status: 'unknown' | 'running' | 'success' | 'fail',
+    status: 'unknown' | 'running' | 'success' | 'fail',
   }
 
   async test () {
@@ -36,6 +36,7 @@ export class Test extends Component<{}> {
       await this.props.run()
       this.setState({status: 'success'})
     } catch (error) {
+      console.warn(error)
       this.setState({status: 'fail', error})
     }
   }
@@ -54,15 +55,20 @@ export class Test extends Component<{}> {
   }
 
   renderRetry () {
-    if (this.state.status === 'success' || this.state.status === 'fail') {
-      return (
-        <TouchableOpacity style={{flex: 1, paddingVertical: 10}} onPress={this.test}>
-          <Text style={styles.link}>
-            Retry
-          </Text>
-        </TouchableOpacity>
-      )
-    }
+    if (this.state.status === 'running') return null
+
+    return (
+      <TouchableOpacity
+        style={{flex: 1, paddingVertical: 10}}
+        onPress={this.test}
+      >
+        <Text style={styles.link}>
+          {this.state.status === 'success' || this.state.status === 'fail'
+            ? 'Retry'
+            : 'Run'}
+        </Text>
+      </TouchableOpacity>
+    )
   }
 
   renderStackTraceLink () {
@@ -73,10 +79,9 @@ export class Test extends Component<{}> {
     return (
       <TouchableOpacity
         style={{flex: 1, paddingVertical: 10}}
-        onPress={() => this.setState({showStack: !this.state.showStack})}>
-        <Text style={styles.link}>
-          Stack
-        </Text>
+        onPress={() => this.setState({showStack: !this.state.showStack})}
+      >
+        <Text style={styles.link}>Stack</Text>
       </TouchableOpacity>
     )
   }
