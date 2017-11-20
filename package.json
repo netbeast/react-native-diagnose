@@ -1,15 +1,17 @@
 {
-  "name": "react-native-dial",
-  "version": "1.0.12",
-  "description": "A react native reusable and efficient dial knob element",
-  "main": "./Dial.js",
+  "name": "react-native-diagnose",
+  "version": "0.0.1",
+  "description": "A react native runtime testing framework",
+  "main": "./src",
   "license": "MIT",
   "repository": {
     "type": "https",
     "url": "https://github.com/netbeast/react-native-dial"
   },
   "keywords": [
-    "dial",
+    "test",
+    "diagnose",
+    "diagnostics",
     "react",
     "native",
     "react-native",
