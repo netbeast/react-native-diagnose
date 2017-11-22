@@ -30,6 +30,13 @@ return (
 
 <img alt="demo screenshot" src="screenshot.png" width="350" />
 
+## Help wanted
+- [ ] Elapsed time
+- [ ] Before all
+- [ ] Before each
+- [ ] After each
+- [ ] After all
+
 
 More documentation is incoming, in the meanwhile please read the source code. It is a single file!
 PRs and issues are more than welcome.
