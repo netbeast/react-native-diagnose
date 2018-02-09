@@ -60,8 +60,7 @@ export class Test extends Component<{}> {
     return (
       <TouchableOpacity
         style={{flex: 1, paddingVertical: 10}}
-        onPress={this.test}
-      >
+        onPress={this.test}>
         <Text style={styles.link}>
           {this.state.status === 'success' || this.state.status === 'fail'
             ? 'Retry'
@@ -79,8 +78,7 @@ export class Test extends Component<{}> {
     return (
       <TouchableOpacity
         style={{flex: 1, paddingVertical: 10}}
-        onPress={() => this.setState({showStack: !this.state.showStack})}
-      >
+        onPress={() => this.setState({showStack: !this.state.showStack})}>
         <Text style={styles.link}>Stack</Text>
       </TouchableOpacity>
     )
@@ -108,9 +106,7 @@ export class Test extends Component<{}> {
         <View style={styles.testRow}>
           <View padding={10} flexDirection="row" flex={4}>
             {this.renderStatus()}
-            <Text style={styles.testDescription}>
-              &nbsp;&nbsp;{this.props.should}
-            </Text>
+            <Text style={styles.testDescription}>{this.props.should}</Text>
           </View>
           {this.renderRetry()}
           {this.renderStackTraceLink()}
@@ -129,6 +125,8 @@ const styles = StyleSheet.create({
   },
   testDescription: {
     fontSize: 14,
+    maxWidth: 200,
+    paddingLeft: 5,
   },
   link: {
     fontWeight: '600',
